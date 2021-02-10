@@ -3,3 +3,29 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+html,
+body {
+  min-height: 100%;
+  text-align: center;
+}
+
+h1 {
+  padding: 10px;
+}
+
+.new-grid {
+  padding: 10px;
+  margin: 10px;
+}
+
+.container {
+  width: 600px;
+  height: 500px;
+  margin: 10px auto;
+  display: grid;
+}
+
+.square {
+  border: 1px solid black;
+}
