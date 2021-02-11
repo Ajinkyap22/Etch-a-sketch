@@ -3,14 +3,16 @@
 // VARIABLES
 const container = document.querySelector(".container");
 const form = document.querySelector(".new-grid");
+const colorPicker = document.querySelector(".color");
+const slider = document.querySelector(".slider");
+const sliderLabel = document.querySelector(".slider-label");
+
+// FUNCTIONS
 
 // Create a grid container with default size = 16 x 16
 function createGrid(size = 16) {
   // Deleting previously added divs
   container.innerHTML = "";
-
-  // Clear input field
-  document.querySelector(".grid-size").value = "";
 
   for (let i = 1; i <= size ** 2; i++) {
     // Create a div element
@@ -30,32 +32,68 @@ function createGrid(size = 16) {
   // Adding event listener here because the squares need to be reselected everytime the createGrid() function is called
   document
     .querySelectorAll(".square")
-    .forEach((square) => square.addEventListener("mouseover", randomRGB));
+    .forEach((square) =>
+      square.addEventListener(
+        "mouseover",
+        () => (square.style.backgroundColor = randomColor())
+      )
+    );
 }
 
-createGrid();
+window.onload = createGrid();
+
+// Grid must change color each time you hover over them
+function randomColor() {
+  let hexCode = "#";
+
+  while (hexCode.length < 7) {
+    hexCode += Math.round(Math.random() * 15).toString(16);
+  }
+
+  return hexCode;
+}
+
+// Change color function
+function drawOnHover(color) {
+  document
+    .querySelectorAll(".square")
+    .forEach((square) =>
+      square.addEventListener(
+        "mouseover",
+        () => (square.style.backgroundColor = color)
+      )
+    );
+}
+
+// EVENT LISTENERS
+
+// Change the slider label value as the slider moves
+slider.oninput = function () {
+  sliderLabel.textContent = this.value;
+};
 
 // Add a button on top which clears all the current grids & prompts the user for new grid size
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const newGridSize = +document.querySelector(".grid-size").value;
+  const newGridSize = +document.querySelector(".slider").value;
 
   createGrid(newGridSize);
 });
-
-// Grid must change color each time you hover over them
-function randomRGB(e) {
-  const r = Math.floor(Math.random() * 255) + 1;
-  const g = Math.floor(Math.random() * 255) + 1;
-  const b = Math.floor(Math.random() * 255) + 1;
-
-  e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
-}
 
 // Reset grid back to 16 x 16 white when reset is clicked
 document
   .querySelector(".reset")
   .addEventListener("click", createGrid.bind(this, 16));
 
-// Add a black color selector button
+// Change the color when the input of color picker is changed
+colorPicker.addEventListener("input", function () {
+  drawOnHover(colorPicker.value);
+});
+
+// Eraser to change square color back to white
+document
+  .querySelector(".eraser")
+  .addEventListener("click", drawOnHover.bind(this, "#FFF"));
+
+// Change outline & color of btns, add hover style, active style, change heading color

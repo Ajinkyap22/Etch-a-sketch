@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -8,15 +11,48 @@ html,
 body {
   min-height: 100%;
   text-align: center;
+  font-family: "Caveat", sans-serif;
+  background-color: whitesmoke;
 }
 
 h1 {
-  padding: 10px;
+  padding: 5px;
 }
 
 .new-grid {
-  padding: 10px;
+  display: inline;
+}
+
+.slider {
+  width: 200px;
+}
+
+.slider-label {
+  font-size: 20px;
+}
+
+.btn {
+  padding: 5px 10px;
   margin: 10px;
+  background-color: #5ec576;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+
+.color-picker {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  margin: 5px;
+}
+
+.color {
+  width: 60px;
+  cursor: pointer;
 }
 
 .container {
@@ -24,8 +60,11 @@ h1 {
   height: 500px;
   margin: 10px auto;
   display: grid;
+  border: 4px solid rgb(98, 172, 201);
+  border-radius: 10px;
 }
 
 .square {
-  border: 1px solid black;
+  border: 1px solid lightgray;
+  border-radius: 3px;
 }

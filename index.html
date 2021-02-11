@@ -11,18 +11,16 @@
   <body>
     <h1>Etch-a-sketch</h1>
     <form class="new-grid">
-      <input
-        type="number"
-        class="grid-size"
-        placeholder="Number of squares per side"
-        max="100"
-        min="4"
-        required
-      />
-      <button type="submit" class="create">Create</button>
-      <button class="reset">Reset</button>
-      <input type="color" class="color" />
+      <input type="range" class="slider" value="16" max="100" min="4" />
+      <label class="slider-label" for="grid-size">16</label>
+      <button type="submit" class="btn create">Create</button>
     </form>
+    <button class="btn reset">Reset</button>
+    <div class="color-picker">
+      <input type="color" class="color" />
+      <p>Pick a color</p>
+    </div>
+    <button class="btn eraser">Eraser</button>
     <div class="container"></div>
     <script src="script.js"></script>
   </body>
