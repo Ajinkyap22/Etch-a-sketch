@@ -10,18 +10,32 @@
   </head>
   <body>
     <h1>Etch-a-sketch</h1>
-    <form class="new-grid">
-      <input type="range" class="slider" value="16" max="100" min="4" />
-      <label class="slider-label" for="grid-size">16</label>
-      <button type="submit" class="btn create">Create</button>
-    </form>
-    <button class="btn reset">Reset</button>
-    <div class="color-picker">
-      <input type="color" class="color" />
-      <p>Pick a color</p>
+    <div class="menu">
+      <form class="new-grid">
+        <input type="range" class="slider" value="16" max="100" min="4" />
+        <label class="slider-label" for="grid-size">16 X 16</label>
+        <button type="submit" class="btn create">Create</button>
+      </form>
+      <button class="btn reset">Reset</button>
+      <button class="btn rgb" autofocus>Draw</button>
+      <div class="color-picker">
+        <input type="color" class="color" />
+        <p>Pick a color</p>
+      </div>
+      <button class="btn eraser">Eraser</button>
     </div>
-    <button class="btn eraser">Eraser</button>
     <div class="container"></div>
+    <footer>
+      <p>
+        Built by
+        <a href="https://github.com/Ajinkyap22" target="_blank"
+          >Ajinkya Palaskar</a
+        >|
+        <a href="https://github.com/Ajinkyap22/Etch-a-sketch" target="_blank"
+          >Source code</a
+        >
+      </p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

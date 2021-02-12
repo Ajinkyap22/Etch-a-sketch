@@ -29,20 +29,11 @@ function createGrid(size = 16) {
   container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
   container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-  // Adding event listener here because the squares need to be reselected everytime the createGrid() function is called
-  document
-    .querySelectorAll(".square")
-    .forEach((square) =>
-      square.addEventListener(
-        "mouseover",
-        () => (square.style.backgroundColor = randomColor())
-      )
-    );
+  // Adding this here because the squares need to be reselected everytime the createGrid() function is called
+  drawRandom();
 }
 
-window.onload = createGrid();
-
-// Grid must change color each time you hover over them
+// Generate a random color
 function randomColor() {
   let hexCode = "#";
 
@@ -53,7 +44,7 @@ function randomColor() {
   return hexCode;
 }
 
-// Change color function
+// draw a single color on hover
 function drawOnHover(color) {
   document
     .querySelectorAll(".square")
@@ -65,14 +56,26 @@ function drawOnHover(color) {
     );
 }
 
+// Draw random colors on hover
+function drawRandom() {
+  document
+    .querySelectorAll(".square")
+    .forEach((square) =>
+      square.addEventListener(
+        "mouseover",
+        () => (square.style.backgroundColor = randomColor())
+      )
+    );
+}
+
 // EVENT LISTENERS
 
 // Change the slider label value as the slider moves
 slider.oninput = function () {
-  sliderLabel.textContent = this.value;
+  sliderLabel.textContent = `${this.value} X ${this.value}`;
 };
 
-// Add a button on top which clears all the current grids & prompts the user for new grid size
+// A button on top which clears all the current grids & takes new grid size from user
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -96,4 +99,8 @@ document
   .querySelector(".eraser")
   .addEventListener("click", drawOnHover.bind(this, "#FFF"));
 
-// Change outline & color of btns, add hover style, active style, change heading color
+// RGB button to switch back to random colors after erasing
+document.querySelector(".rgb").addEventListener("click", drawRandom);
+
+// MAIN FUNCTION CALL
+window.onload = createGrid();
