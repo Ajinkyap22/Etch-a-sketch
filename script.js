@@ -7,6 +7,41 @@ const colorPicker = document.querySelector(".color");
 const slider = document.querySelector(".slider");
 const sliderLabel = document.querySelector(".slider-label");
 
+// EVENT LISTENERS
+
+// Change the slider label value as the slider moves
+slider.oninput = function () {
+  sliderLabel.textContent = `${this.value} X ${this.value}`;
+};
+
+// A button on top which clears all the current grids & takes new grid size from user
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const newGridSize = +document.querySelector(".slider").value;
+
+  createGrid(newGridSize);
+});
+
+// Reset grid back to 16 x 16 white when reset is clicked
+document.querySelector(".reset").addEventListener("click", reset);
+
+// Change the color when the input of color picker is changed
+colorPicker.addEventListener("input", function () {
+  drawOnHover(colorPicker.value);
+});
+
+// Eraser to change square color back to white
+document
+  .querySelector(".eraser")
+  .addEventListener("click", drawOnHover.bind(this, "#FFF"));
+
+// RGB button to switch back to random colors after erasing
+document.querySelector(".rgb").addEventListener("click", drawRandom);
+
+// MAIN FUNCTION CALL
+window.onload = createGrid();
+
 // FUNCTIONS
 
 // Create a grid container with default size = 16 x 16
@@ -31,6 +66,15 @@ function createGrid(size = 16) {
 
   // Adding this here because the squares need to be reselected everytime the createGrid() function is called
   drawRandom();
+}
+
+// Rest grid back to 16x16
+function reset() {
+  createGrid();
+
+  // Change input slider value & textContent back to 16
+  slider.value = 16;
+  sliderLabel.textContent = "16 X 16";
 }
 
 // Generate a random color
@@ -67,40 +111,3 @@ function drawRandom() {
       )
     );
 }
-
-// EVENT LISTENERS
-
-// Change the slider label value as the slider moves
-slider.oninput = function () {
-  sliderLabel.textContent = `${this.value} X ${this.value}`;
-};
-
-// A button on top which clears all the current grids & takes new grid size from user
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const newGridSize = +document.querySelector(".slider").value;
-
-  createGrid(newGridSize);
-});
-
-// Reset grid back to 16 x 16 white when reset is clicked
-document
-  .querySelector(".reset")
-  .addEventListener("click", createGrid.bind(this, 16));
-
-// Change the color when the input of color picker is changed
-colorPicker.addEventListener("input", function () {
-  drawOnHover(colorPicker.value);
-});
-
-// Eraser to change square color back to white
-document
-  .querySelector(".eraser")
-  .addEventListener("click", drawOnHover.bind(this, "#FFF"));
-
-// RGB button to switch back to random colors after erasing
-document.querySelector(".rgb").addEventListener("click", drawRandom);
-
-// MAIN FUNCTION CALL
-window.onload = createGrid();
