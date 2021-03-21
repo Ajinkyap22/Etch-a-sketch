@@ -42,5 +42,5 @@ This was a project in The Odin Project curriculum.
 
 ## Contact
 
-feel free to contact me at my mail - palaskarajinkya22@gmail.com
+Feel free to contact me at my mail - palaskarajinkya22@gmail.com
 
