@@ -3,7 +3,7 @@
 
 ## Table of contents
 
-- [Preview Link](#preview-link)
+- [Live Demo](#live-demo)
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Features](#features)
@@ -12,7 +12,7 @@
 - [Contact](#contact)
 
 
-## Preview Link
+## Live Demo
 
 [Etch-a-sketch](https://ajinkyap22.github.io/Etch-a-sketch/)
 
